@@ -105,9 +105,9 @@ class Letor:
         local_docs = []
         for i in docs:
             doc_text = ""
-            i = os.path.join(self.directoire, str(i)[2:])
+            #i = os.path.join(self.directoire, str(i)[2:])
             print(i)
-            doc_file = open(i)
+            doc_file = open(str(i)[2:])
             print("doc_file")
             print(doc_file)
             temp = i.replace("\\", "/")
