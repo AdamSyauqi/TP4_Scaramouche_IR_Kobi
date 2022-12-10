@@ -105,15 +105,16 @@ class Letor:
         local_docs = []
         for i in docs:
             doc_text = ""
-            #i = os.path.join(self.directoire, str(i)[2:])
+            i = os.path.join(os.path.dirname(__file__), str(i)[2:])
             print(i)
-            doc_file = open(str(i)[2:])
+            doc_file = open(i)
             print("doc_file")
             print(doc_file)
             temp = i.replace("\\", "/")
             temp_file = open(temp)
             print(temp_file)
-            doc_text = self.process_corp(doc_file.read())
+            doc_text = doc_file.read().split()
+            # doc_text = self.process_corp(doc_file.read())
             # with open(i, "r") as f:
             #     doc_text = self.process_corp(f.read())
             #     print("doc-text")
