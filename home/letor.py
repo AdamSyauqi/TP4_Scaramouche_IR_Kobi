@@ -104,8 +104,11 @@ class Letor:
             for i in docs:
                 doc_text = ""
                 i = os.path.join(self.directoire, str(i)[2:])
-                with open(i, "r", encoding='utf-8') as f:
+                print(i)
+                with open(i, "r") as f:
                     doc_text = self.process_corp(f.read())
+                    print("doc-text")
+                    print(doc_text)
                 local_docs.append((i, doc_text))
             print("local docs")
             print(local_docs)
@@ -113,7 +116,11 @@ class Letor:
             for _, doc in local_docs:
                 X_unseen.append(self.features_processing(query.split(), doc, model, self.dictionary))
             X_unseen = np.array(X_unseen)
+            print("X_Unseen")
+            print(X_unseen)
             predicted_score = self.rankModel.predict(X_unseen)
+            print("predicted score")
+            print(predicted_score)
             did_scores = [x for x in zip([did for (did, _) in local_docs], predicted_score)]
             res = sorted(did_scores, key = lambda tup: tup[1], reverse = True)
             print("res")
