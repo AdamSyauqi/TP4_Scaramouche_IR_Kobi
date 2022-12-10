@@ -29,6 +29,8 @@ def index(request):
             }
             return render(request, 'home/index.html', context)
         except:
+            print(resultat)
+            print("Error-------------------------------------------------------------------------------------------------------")
             context = {
                 'query': query,
                 'loaded': 1
