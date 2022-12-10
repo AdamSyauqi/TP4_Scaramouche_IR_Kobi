@@ -17,7 +17,6 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-PRODUCTION = os.environ.get('DATABASE_URL') != None
 
 
 # Quick-start development settings - unsuitable for production
@@ -86,8 +85,6 @@ DATABASES = {
     }
 }
 
-if PRODUCTION:
-    DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
