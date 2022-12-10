@@ -39,6 +39,8 @@ class Letor:
         stemmer = nt.stem.PorterStemmer()
         stopword = set(nt.corpus.stopwords.words('english'))
         tokenizer = nt.tokenize
+        print("process corp")
+        #print([stemmer.stem(x) for x in [w for w in tokenizer.word_tokenize(re.sub("[^\w\s]", " ", re.sub("\s+", " ", corpus.lower()))) if not w.lower() in stopword]][:4])
         return [stemmer.stem(x) for x in [w for w in tokenizer.word_tokenize(re.sub("[^\w\s]", " ", re.sub("\s+", " ", corpus.lower()))) if not w.lower() in stopword]]
 
     # This is the vectorization function
@@ -105,13 +107,15 @@ class Letor:
                 doc_text = ""
                 i = os.path.join(self.directoire, str(i)[2:])
                 print(i)
-                with open(i, "r") as f:
-                    doc_text = self.process_corp(f.read())
-                    print("doc-text")
-                    print(doc_text)
+                doc_file = open(i)
+                doc_text = self.process_corp(doc_file.read())
+                # with open(i, "r") as f:
+                #     doc_text = self.process_corp(f.read())
+                #     print("doc-text")
+                #     print(doc_text)
                 local_docs.append((i, doc_text))
-            print("local docs")
-            print(local_docs)
+            # print("local docs")
+            # print(local_docs)
             X_unseen = []
             for _, doc in local_docs:
                 X_unseen.append(self.features_processing(query.split(), doc, model, self.dictionary))
