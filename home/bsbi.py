@@ -2,10 +2,8 @@ import os
 import pickle
 import contextlib
 import heapq
-from pydoc import doc
 import time
 import math
-from turtle import pos
 import re
 
 from .index import InvertedIndexReader, InvertedIndexWriter
