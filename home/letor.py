@@ -108,6 +108,11 @@ class Letor:
             i = os.path.join(self.directoire, str(i)[2:])
             print(i)
             doc_file = open(i)
+            print("doc_file")
+            print(doc_file)
+            temp = i.replace("\\", "/")
+            temp_file = open(temp)
+            print(temp_file)
             doc_text = self.process_corp(doc_file.read())
             # with open(i, "r") as f:
             #     doc_text = self.process_corp(f.read())
